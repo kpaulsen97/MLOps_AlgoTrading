@@ -5,19 +5,25 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 import sys
+import os
+
+wd = os.getcwd()
 
 sys.path.append(
-    "C:\\Users\\Lenovo\\Desktop\\University\\Machine Learning Operations\\Final_Project\\AlgoRepo\\src\\models"
-)
+     wd+"\\src\\models"
+ )
 
 from model import MyAwesomeModel
+
+from omegaconf import OmegaConf
+config = OmegaConf.load('src/models/config.yaml')
 
 '''
 Script designed to take the model, train it, and test it.
 '''
 
 data = torch.load(
-    "C:\\Users\\Lenovo\\Desktop\\University\\Machine Learning Operations\\Final_Project\\AlgoRepo\\data\\processed\\processed.pt"
+    "data/processed/processed.pt"
 )
 x_train, x_test, y_train, y_test = data.values()
 y_train = torch.from_numpy(y_train.values)
@@ -25,7 +31,7 @@ y_test = torch.from_numpy(y_test.values)
 num_input = len(x_train[0])
 
 net = MyAwesomeModel(num_input, 2)
-optimizer = optim.SGD(net.parameters(), lr=0.01)
+optimizer = optim.SGD(net.parameters(), lr=config.hyperparameters.learning_rate)
 criterion = nn.CrossEntropyLoss()
 
 
@@ -35,8 +41,8 @@ from sklearn.metrics import accuracy_score
 
 
 # setting hyperparameters and gettings epoch sizes
-batch_size = 20
-num_epochs = 400
+batch_size = config.hyperparameters.batch_size
+num_epochs = config.hyperparameters.num_epochs
 num_samples_train = x_train.shape[0]
 num_batches_train = num_samples_train // batch_size
 
