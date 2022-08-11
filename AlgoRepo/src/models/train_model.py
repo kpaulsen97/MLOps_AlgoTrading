@@ -5,12 +5,20 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 import sys
-sys.path.append('C:\\Users\\Lenovo\\Desktop\\University\\Machine Learning Operations\\Final_Project\\AlgoRepo\\src\\models')
+
+sys.path.append(
+    "C:\\Users\\Lenovo\\Desktop\\University\\Machine Learning Operations\\Final_Project\\AlgoRepo\\src\\models"
+)
 
 from model import MyAwesomeModel
 
+'''
+Script designed to take the model, train it, and test it.
+'''
 
-data = torch.load('C:\\Users\\Lenovo\\Desktop\\University\\Machine Learning Operations\\Final_Project\\AlgoRepo\\data\\processed\\processed.pt')
+data = torch.load(
+    "C:\\Users\\Lenovo\\Desktop\\University\\Machine Learning Operations\\Final_Project\\AlgoRepo\\data\\processed\\processed.pt"
+)
 x_train, x_test, y_train, y_test = data.values()
 y_train = torch.from_numpy(y_train.values)
 y_test = torch.from_numpy(y_test.values)
@@ -50,14 +58,14 @@ for epoch in range(num_epochs):
         optimizer.zero_grad()
         slce = get_slice(i, batch_size)
         output = net(x_train[slce])
-        
+
         # compute gradients given loss
         target_batch = y_train[slce]
         batch_loss = criterion(output, target_batch)
         batch_loss.backward()
         optimizer.step()
-        
-        cur_loss += batch_loss   
+
+        cur_loss += batch_loss
     losses.append(cur_loss / batch_size)
 
     net.eval()
@@ -66,24 +74,34 @@ for epoch in range(num_epochs):
     for i in range(num_batches_train):
         slce = get_slice(i, batch_size)
         output = net(x_train[slce])
-        
+
         preds = torch.max(output, 1)[1]
-        
+
         train_targs += list(y_train[slce].numpy())
         train_preds += list(preds.data.numpy())
-        
+
     train_acc_cur = accuracy_score(train_targs, train_preds)
-    
-    
+
     train_acc.append(train_acc_cur)
-    
-    
+
     if epoch % 10 == 0:
-        print("Epoch %2i : Train Loss %f , Train acc %f" % (
-                epoch+1, losses[-1], train_acc_cur))
+        print(
+            "Epoch %2i : Train Loss %f , Train acc %f"
+            % (epoch + 1, losses[-1], train_acc_cur)
+        )
+
+# Test model
+
+output = net(x_test)
+preds = torch.max(output, 1)[1]
+test_targs = y_test.numpy()
+test_preds = preds.data.numpy()
+test_acc_cur = accuracy_score(test_targs, test_preds)
+print("Test accuracy: ", test_acc_cur)
+
 
 epoch = np.arange(len(train_acc))
 plt.figure()
-plt.plot(epoch, train_acc, 'r')
-plt.legend(['Train Accucarcy'])
-plt.xlabel('Updates'), plt.ylabel('Acc')
+plt.plot(epoch, train_acc, "r")
+plt.legend(["Train Accucarcy"])
+plt.xlabel("Updates"), plt.ylabel("Acc")
