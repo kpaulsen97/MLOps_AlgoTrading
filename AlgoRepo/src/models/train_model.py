@@ -4,6 +4,9 @@ import torch.nn as nn
 import matplotlib.pyplot as plt
 import numpy as np
 
+import wandb
+wandb.init()
+
 import sys
 import os
 
@@ -33,7 +36,7 @@ num_input = len(x_train[0])
 net = MyAwesomeModel(num_input, 2)
 optimizer = optim.SGD(net.parameters(), lr=config.hyperparameters.learning_rate)
 criterion = nn.CrossEntropyLoss()
-
+wandb.watch(net)
 
 # we could have done this ourselves,
 # but we should be aware of sklearn and its tools
@@ -73,6 +76,7 @@ for epoch in range(num_epochs):
 
         cur_loss += batch_loss
     losses.append(cur_loss / batch_size)
+    wandb.log({'loss':cur_loss/batch_size})
 
     net.eval()
     ### Evaluate training
