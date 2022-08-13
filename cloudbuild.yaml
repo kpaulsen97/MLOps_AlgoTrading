@@ -1,0 +1,12 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Sat Aug 13 17:13:45 2022
+
+@author: Lenovo
+"""
+
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/mlops-359313', '.']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/mlops-359313']
