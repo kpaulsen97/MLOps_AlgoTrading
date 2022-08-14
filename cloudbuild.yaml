@@ -7,6 +7,6 @@ Created on Sat Aug 13 17:13:45 2022
 
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/mlops-359313/testing', '.']
+  args: ['build', '-t', 'gcr.io/mlops-359313/testing', 'trainer.dockerfile']
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/mlops-359313/testing']
