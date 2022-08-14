@@ -7,6 +7,6 @@ Created on Sat Aug 13 17:13:45 2022
 
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/mlops-359313', '.']
+  args: ['build', '-t', 'gcr.io/mlops-359313/testing', '.']
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/mlops-359313']
+  args: ['push', 'gcr.io/mlops-359313/testing']
