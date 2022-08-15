@@ -1,0 +1,22 @@
+{
+    "os": "Windows-10-10.0.19043-SP0",
+    "python": "3.10.5",
+    "heartbeatAt": "2022-08-15T12:54:29.729895",
+    "startedAt": "2022-08-15T12:54:22.036318",
+    "docker": null,
+    "cpu_count": 4,
+    "cuda": null,
+    "args": null,
+    "state": "running",
+    "program": "c:\\users\\lenovo\\desktop\\university\\machine learning operations\\final_project\\algorepo\\src\\models\\train_model.py",
+    "codePath": "algorepo\\src\\models\\train_model.py",
+    "git": {
+        "remote": "https://github.com/kpaulsen97/MLOps_AlgoTrading.git",
+        "commit": "6ee16320e5c001a8151f548f3c04c1c8f3374213"
+    },
+    "email": "kennethpaulsen1997@gmail.com",
+    "root": "C:/Users/Lenovo/Desktop/University/Machine Learning Operations/Final_Project",
+    "host": "DESKTOP-OC82IHG",
+    "username": "Lenovo",
+    "executable": "C:\\Users\\Lenovo\\anaconda3\\envs\\AlgoProject\\python.exe"
+}
