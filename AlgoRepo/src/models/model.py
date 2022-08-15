@@ -8,6 +8,10 @@ Created on Tue Aug  9 16:41:15 2022
 from torch import nn
 import torch.nn.functional as F
 
+'''
+deep learning model. simple two hidden layer model.
+'''
+
 
 class MyAwesomeModel(nn.Module):
     def __init__(self, num_input, num_output):

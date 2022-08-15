@@ -11,6 +11,8 @@ text = [line[:-1] for line in text]
 
 text = [line.split(' ')[0] for line in text]
 
+text = [line.split('=')[0] for line in text]
+
 with open('requirements.txt', 'w') as f:
     for line in text:
         f.write(f"{line}\n")

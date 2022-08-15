@@ -1,0 +1,21 @@
+{
+    "os": "Windows-10-10.0.19043-SP0",
+    "python": "3.10.5",
+    "heartbeatAt": "2022-08-14T14:51:34.541520",
+    "startedAt": "2022-08-14T14:51:27.098424",
+    "docker": null,
+    "cpu_count": 4,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "<python with no main file>",
+    "git": {
+        "remote": "https://github.com/kpaulsen97/MLOps_AlgoTrading.git",
+        "commit": "a7a7de0a8d94c3c63880b707cf36c850b1c21e20"
+    },
+    "email": "kennethpaulsen1997@gmail.com",
+    "root": "C:/Users/Lenovo/Desktop/University/Machine Learning Operations/Final_Project",
+    "host": "DESKTOP-OC82IHG",
+    "username": "Lenovo",
+    "executable": "C:\\Users\\Lenovo\\anaconda3\\envs\\AlgoProject\\python.exe"
+}
